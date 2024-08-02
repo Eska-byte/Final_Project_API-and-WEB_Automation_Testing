@@ -132,7 +132,7 @@ Feature: Login - Checkout
   @web
   Scenario: checkout item without filling name and/or credit card number (negative)
     Given user is on home page
-    And user click product title of item "Iphone 6"
+    And user click product title of item "Iphone"
     And user click add to cart button
     Then user will see alert message "Product added"
     And user click cart navigation on top menu

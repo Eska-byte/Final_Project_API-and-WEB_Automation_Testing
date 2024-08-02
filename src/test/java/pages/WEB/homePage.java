@@ -4,6 +4,8 @@ import helpers.WEB.webUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.time.Duration;
+
 import static org.junit.Assert.assertTrue;
 
 public class homePage extends webUtility {
@@ -24,11 +26,12 @@ public class homePage extends webUtility {
     By categories(String text) {
         return By.xpath("//*[text()='"+text+"']");
     }
-    By listProduct = By.id("tbodyid");
+    By productList = By.id("tbodyid");
     By productTitle(String text){
         return By.xpath("//a[contains(text(),'"+text+"')]");
     }
-    By nextButton = By.id("next2");
+    By nextButton = By.xpath("//button[@id='next2']");
+    By productGrid = By.xpath("//div[@id='tbodyid']/div[contains(@class, 'col-lg-4')]");
 
     public void goToHomePage(){
         driver.get("https://www.demoblaze.com/");
@@ -83,8 +86,8 @@ public class homePage extends webUtility {
     public void chooseCategory(String text){
         driver.findElement(categories(text)).click();
     }
-    public void validateListProduct(){
-        driver.findElement(listProduct).isDisplayed();
+    public void validateProductList(){
+        driver.findElement(productList).isDisplayed();
     }
     public void clickProductTitle(String text){
         wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle(text)));
@@ -92,7 +95,7 @@ public class homePage extends webUtility {
         driver.findElement(productTitle(text)).click();
     }
     public void clickNextButton(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(nextButton));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productGrid));
         wait.until(ExpectedConditions.elementToBeClickable(nextButton));
         driver.findElement(nextButton).click();
     }

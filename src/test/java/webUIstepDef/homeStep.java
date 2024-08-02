@@ -93,7 +93,7 @@ public class homeStep {
 
     @And("user will see list of products")
     public void userWillSeeListOfProducts() {
-        HomePage.validateListProduct();
+        HomePage.validateProductList();
     }
 
     @And("user click product title of item {string}")
