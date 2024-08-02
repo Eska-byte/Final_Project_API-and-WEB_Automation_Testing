@@ -23,6 +23,9 @@ jobs:
     #install browser
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1.7.2
+      with:
+        chrome-version: 127
+        install-chromedriver: true
 
    #execute gradle command for running API test and WEB UI test
     - name: Setup Gradle 8.5
