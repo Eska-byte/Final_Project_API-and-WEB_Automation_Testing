@@ -2,6 +2,7 @@ package pages.WEB;
 
 import helpers.WEB.webUtility;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
@@ -40,12 +41,22 @@ public class homePage extends webUtility {
         driver.findElement(signupNavigation).click();
     }
     public void createUsername(){
-        driver.findElement(usernameTextbox_signup).sendKeys(username);
+        WebElement element = driver.findElement(usernameTextbox_signup);
+        element.click();
+        element.clear();
+        element.sendKeys(username);
     }
     public void createPassword(){
-        driver.findElement(passwordTextbox_signup).sendKeys(password);
+        WebElement element = driver.findElement(passwordTextbox_signup);
+        element.click();
+        element.clear();
+        element.sendKeys(password);
     }
     public void clickSignupButton(){
+        wait.until(ExpectedConditions.and(
+                ExpectedConditions.visibilityOfElementLocated(signupButton),
+                ExpectedConditions.elementToBeClickable(signupButton)
+        ));
         driver.findElement(signupButton).click();
     }
     public void validateAlertMessage(String message){
@@ -55,16 +66,25 @@ public class homePage extends webUtility {
         driver.switchTo().alert().dismiss();
     }
     public void inputExistUser(String text){
-        driver.findElement(usernameTextbox_signup).sendKeys(text);
+        WebElement element = driver.findElement(usernameTextbox_signup);
+        element.click();
+        element.clear();
+        element.sendKeys(text);
     }
     public void clickLoginNavigation(){
         driver.findElement(loginNavigation).click();
     }
     public void inputUsername(){
-        driver.findElement(usernameTextbox_login).sendKeys(username);
+        WebElement element = driver.findElement(usernameTextbox_login);
+        element.click();
+        element.clear();
+        element.sendKeys(username);
     }
     public void inputPassword(){
-        driver.findElement(passwordTextbox_login).sendKeys(password);
+        WebElement element = driver.findElement(passwordTextbox_login);
+        element.click();
+        element.clear();
+        element.sendKeys(password);
     }
     public void clickLoginButton(){
         driver.findElement(loginButton).click();
@@ -81,7 +101,10 @@ public class homePage extends webUtility {
         driver.findElement(loginNavigation).isDisplayed();
     }
     public void inputWrongPassword(String text){
-        driver.findElement(passwordTextbox_login).sendKeys(text);
+        WebElement element = driver.findElement(passwordTextbox_login);
+        element.click();
+        element.clear();
+        element.sendKeys(text);
     }
     public void chooseCategory(String text){
         driver.findElement(categories(text)).click();
